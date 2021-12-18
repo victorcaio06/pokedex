@@ -2,11 +2,23 @@
   "name": "pokedex",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorcaio06/pokedex.git"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorcaio06/pokedex/issues"
+  },
+  "homepage": "https://github.com/victorcaio06/pokedex#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
 }

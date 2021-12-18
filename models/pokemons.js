@@ -1,13 +1,12 @@
-export class Pokemons{
-    
-    constructor(id, nome, pvMax, ataque, defesa, ataqueEspecial, defesaEspecial, velocidade){
+export class Pokemon{
+    constructor(id, nome, pvMax, ataque, defesa, atkEsp, defEsp, velocidade){
         this.id = id;
         this.nome = nome;
         this.pvMax = pvMax;
-        this.ataque = ataque;
+        this.atque = ataque;
         this.defesa = defesa;
-        this.ataqueEspecial = ataqueEspecial;
-        this.defesaEspecial = defesaEspecial;
+        this.atkEsp = atkEsp;
+        this.defEsp = defEsp;
         this.velocidade = velocidade;
     }
 }

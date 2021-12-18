@@ -1,29 +1,32 @@
-import { Pokemons } from "../models/pokemons";
-const fs = require('fs');
+import { Pokemon } from '../models/pokemons.js';
+import axios from 'axios';
+const url = 'https://profbruno-ufc-qx.github.io/web-development/assets/downloads/pokedex-light.json';
 
-const pokes1 = Pokemons;
-const pokes2 = Pokemons;
 
-try {
-    const data = fs.readFileSync('./pokedex.json', 'utf-8');
-    const user = JSON.parse(data);
-    // console.log(user.pokemons[0].id ,user.pokemons[0].name, user.pokemons[0].stats, user.pokemons[0].sprites.front_default);
-    // console.log(user.pokemons[1].id ,user.pokemons[1].name, user.pokemons[1].stats, user.pokemons[1].sprites.front_default);
-    // console.log(user.pokemons[2].id ,user.pokemons[2].name, user.pokemons[2].stats, user.pokemons[2].sprites.front_default);
-    // console.log(user.pokemons[3].id ,user.pokemons[3].name, user.pokemons[3].stats, user.pokemons[3].sprites.front_default);
-    // console.log(user.pokemons[4].id ,user.pokemons[4].name, user.pokemons[4].stats, user.pokemons[4].sprites.front_default);
-    // const img0 = user.pokemons[0].sprites.front_default;
-    // const img1 = user.pokemons[1].sprites.front_default;
-    // const img2 = user.pokemons[2].sprites.front_default;
-    // const img3 = user.pokemons[3].sprites.front_default;
-    // const img4 = user.pokemons[4].sprites.front_default;
-    // console.log(img0);
-    // console.log(img1);
-    // console.log(img2);
-    // console.log(img3);
-    // console.log(img4);
-    pokes1.nome = user.pokemons[0].name;
-    console.log(pokes1);
-} catch (e) {
-    console.log(e);
+export function pokelist(){
+
+    let pokeslist = [];
+    axios.get(url).then(response =>{
+        const pokemonsjson = response.data;
+        // console.log(pokemonsjson); 
+        
+        for(let i = 0; i < 5; i++){
+            pokeslist.push(new Pokemon(pokemonsjson.pokemons[i].id, pokemonsjson.pokemons[i].name, pokemonsjson.pokemons[i].stats[0].base_stat, 
+                pokemonsjson.pokemons[i].stats[1].base_stat, pokemonsjson.pokemons[i].stats[2].base_stat, pokemonsjson.pokemons[i].stats[3].base_stat, 
+                pokemonsjson.pokemons[i].stats[4].base_stat, pokemonsjson.pokemons[i].stats[5].base_stat));
+        }
+        //console.log(pokeslist);
+        console.table(pokeslist);
+    });
+    
+    //console.log(pokeslist);
 }
+
+//this.id = id;
+//this.nome = nome;
+//this.pvMax = pvMax;
+//this.atque = ataque;
+//this.defesa = defesa;
+//this.atkEsp = atkEsp;
+//this.defEsp = defEsp;
+//this.velocidade = velocidade;
